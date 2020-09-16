@@ -47,58 +47,5 @@ namespace BDSTestForce
 
             Console.ReadKey();
         }
-
-
-
-        //static async Task<bool> ExecTest(DriverType type)
-        //{
-        //    return await Task.Run(() =>
-        //    {
-        //        Console.WriteLine($"begin: {type}");
-
-        //        //return Login(DriverManagerFactory.getDriverManager(type));
-
-        //        return false;
-        //    });
-        //}
-
-        //static string Login(DriverManager driverMamanger)
-        //{
-        //    string title = null;
-        //    var driver = driverMamanger.getWebDriver();
-
-        //    try
-        //    {
-        //        // Test name: login
-        //        // Step # | name | target | value
-        //        // 1 | open | / | 
-        //        driver.Navigate().GoToUrl("https://batdongsan.com.vn/");
-        //        // 2 | click | id=kct_login | 
-        //        //driver.FindElement(By.Id("kct_login")).Click();
-        //        new WebDriverWait(driver, TimeSpan.FromSeconds(10)).Until<IWebElement>((dv) => dv.FindElement(By.Id("kct_login"))).Click();
-
-        //        // 3 | type | id=UserName | quoctuan047@gmail.com
-        //        driver.FindElement(By.Id("UserName")).SendKeys("quoctuan047@gmail.com");
-        //        // 4 | type | id=Password | 12345678999
-        //        driver.FindElement(By.Id("Password")).SendKeys("mậtkhẩutiếngviệt123A");
-        //        // 5 | click | id=btnLogin | 
-        //        driver.FindElement(By.Id("btnLogin")).Click();
-        //        // 6 | click | linkText=Đăng tin rao bán/cho thuê | 
-        //        //driver.FindElement(By.LinkText("Đăng tin rao bán/cho thuê")).Click();
-        //        new WebDriverWait(driver, TimeSpan.FromSeconds(10)).Until<IWebElement>((dv) => dv.FindElement(By.LinkText("Đăng tin rao bán/cho thuê"))).Click();
-
-        //        title = driver.Title;
-        //    }
-        //    catch (Exception ex)
-        //    {
-        //        Console.WriteLine(ex);
-        //    }
-        //    finally
-        //    {
-        //        driverMamanger.quitWebDriver();
-        //    }
-
-        //    return title;
-        //}
     }
 }

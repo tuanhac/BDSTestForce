@@ -53,7 +53,7 @@ namespace BDSTestForce.TestCase.PersonalUI.LoginSuite
                     if (driver != null)
                     {
                         var page = new LoginPageTest(driver);
-                        page.login("quoctuan047@gmail.com", "mậtkhẩutiếngviệt123A");
+                        page.login("validusername", "validpassword");
 
                         return $"Done TestLoginValid: {page.isLoginSuccess()}";
                     }
