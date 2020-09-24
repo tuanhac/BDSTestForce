@@ -64,15 +64,22 @@ services:
 $ docker-compose -f /path/to/docker-compose.yml up -d
  ```
  
+ ## stop docker compose
+ ```sh
+ $ docker-compose -f /path/to/docker-compoes.yml down
+ ```
+ 
 # Code structure:
 ```sh
 root
   ---TestCase
       ---TestPackage (ex: PersonalUI, MobileUI, AddminUI...)
-         ---TestSuite (ex: Login, SubmitPosting, EditPosting...)
-            ---TestSuitePage (ex: LoginPage)
-            ---TestSuitePageTest (ex: LoginPageTest)
-            ---TestSuitePageTestFactory (ex: LoginPageTestFactory)
+         ---TestSuite1 (ex: Login, SubmitPosting, EditPosting...)
+            ---TestSuite1Page.cs (ex: LoginPage)
+            ---TestSuite1PageTest.cs (ex: LoginPageTest)
+            ---TestSuite1PageTestFactory.cs (ex: LoginPageTestFactory)
+         ---TestSuite2
+         ...
 ```
 
 - TestSuitePage: implement Page Object Model pattern
