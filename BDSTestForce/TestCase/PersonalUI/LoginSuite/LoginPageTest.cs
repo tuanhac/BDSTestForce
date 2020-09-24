@@ -19,7 +19,7 @@ namespace BDSTestForce.TestCase.PersonalUI.LoginSuite
 
         }
 
-        public static async Task<string> TestLoginInValid(DriverType type)
+        public static async Task<TestCaseResultInfo> TestLoginInValid(DriverType type)
         {
             return await Task.Run(async () =>
             {
@@ -33,15 +33,15 @@ namespace BDSTestForce.TestCase.PersonalUI.LoginSuite
                         var page = new LoginPageTest(driver);
                         page.login("invalidusername", "invalidpassword");
 
-                        return $"Done TestLoginInValid: {page.isLoginSuccess() == false}";
+                        return new TestCaseResultInfo { Message = $"Done TestLoginInValid", Pass = page.isLoginSuccess() == false };
                     }
                     else
-                        return $"NotStart TestLoginInValid";
+                        return new TestCaseResultInfo { Message = $"NotStart TestLoginInValid", Pass = false };
                 }
             });
         }
 
-        public static async Task<string> TestLoginValid(DriverType type)
+        public static async Task<TestCaseResultInfo> TestLoginValid(DriverType type)
         {
             return await Task.Run(async () =>
             {
@@ -55,24 +55,12 @@ namespace BDSTestForce.TestCase.PersonalUI.LoginSuite
                         var page = new LoginPageTest(driver);
                         page.login("validusername", "validpassword");
 
-                        return $"Done TestLoginValid: {page.isLoginSuccess()}";
+                        return new TestCaseResultInfo { Message = $"Done TestLoginValid", Pass = page.isLoginSuccess() };
                     }
                     else
-                        return $"NotStart TestLoginInValid";
+                        return new TestCaseResultInfo { Message = $"NotStart TestLoginInValid", Pass = false };
                 }
             });
-        }
-
-        public static List<Task<string>> getAllTest()
-        {
-            return new List<Task<string>>() {
-                    LoginPageTest.TestLoginInValid(DriverType.FireFox),
-                    LoginPageTest.TestLoginValid(DriverType.FireFox),
-                    LoginPageTest.TestLoginInValid(DriverType.Chrome),
-                    LoginPageTest.TestLoginValid(DriverType.Chrome),
-                    LoginPageTest.TestLoginInValid(DriverType.Chrome),
-                    LoginPageTest.TestLoginValid(DriverType.Chrome)
-                };
         }
     }
 }

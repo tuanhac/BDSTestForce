@@ -28,12 +28,27 @@ namespace BDSTestForce
             //var chrome = ExecTest(DriverType.Chrome);
             //var firefox = ExecTest(DriverType.FireFox);
 
-            var lstTask = LoginPageTest.getAllTest();
+            List<Task<TestCaseResultInfo>> lstTask = new List<Task<TestCaseResultInfo>>();// new LoginPageTestFactory().getAllTest();
+
+            var typeInterface = typeof(ITestSuitePageFactory);
+            var lstTypeImplemented = AppDomain.CurrentDomain.GetAssemblies().SelectMany(s => s.GetTypes()).Where(p => p.IsClass && typeInterface.IsAssignableFrom(p));
+
+            foreach (var type in lstTypeImplemented) {
+                var obj = Activator.CreateInstance(type) as ITestSuitePageFactory;
+                if (obj != null)
+                    lstTask.AddRange(obj.getAllTest());
+            }
 
             while (lstTask.Count > 0) {
                 var finished = await Task.WhenAny(lstTask);
-                
-                Console.WriteLine($"{DateTime.Now}: {finished.Result}");
+
+                try
+                {
+                    Console.WriteLine($"{DateTime.Now}: {finished.Result.Message}: pass: {finished.Result.Pass}");
+                }
+                catch (Exception ex) {
+                    Console.WriteLine(ex);
+                }
 
                 lstTask.Remove(finished);
             }

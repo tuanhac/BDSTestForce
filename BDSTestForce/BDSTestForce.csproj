@@ -80,15 +80,18 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Core\ITestSuitePageTest.cs" />
     <Compile Include="Core\ChromeDriverManager.cs" />
     <Compile Include="Core\DriverManager.cs" />
     <Compile Include="Core\DriverManagerFactory.cs" />
     <Compile Include="Core\DriverType.cs" />
     <Compile Include="Core\FirefoxDriverManager.cs" />
+    <Compile Include="Core\TestCaseResultInfo.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="TestCase\PersonalUI\LoginSuite\LoginPage.cs" />
     <Compile Include="TestCase\PersonalUI\LoginSuite\LoginPageTest.cs" />
+    <Compile Include="TestCase\PersonalUI\LoginSuite\LoginPageTestFactory.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
