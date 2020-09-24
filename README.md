@@ -1,2 +1,83 @@
 # Install docker
  https://medium.com/@nitinbhardwaj6/selenium-grid-with-docker-c8ecb0d8404
+
+## pull docker images:
+
+```sh
+$ docker pull selenium/hub
+$ docker pull selenium/node-chrome
+```
+
+## Set up infrastructure using docker-compose.
+
+```sh
+version: "3"
+services:
+
+  hub:
+    image: selenium/hub
+    ports:
+      - "4444:4444"
+
+    environment:
+      GRID_MAX_SESSION: 16
+      GRID_BROWSER_TIMEOUT: 3000
+      GRID_TIMEOUT: 3000
+
+  chrome:
+    image: selenium/node-chrome
+    container_name: web-automation_chrome
+    depends_on:
+      - hub
+    environment:
+      HUB_PORT_4444_TCP_ADDR: hub
+      HUB_PORT_4444_TCP_PORT: 4444
+      NODE_MAX_SESSION: 4
+      NODE_MAX_INSTANCES: 4
+    volumes:
+      - /dev/shm:/dev/shm
+    ports:
+      - "9001:5900"
+    links:
+      - hub
+
+  firefox:
+    image: selenium/node-firefox
+    container_name: web-automation_firefox
+    depends_on:
+      - hub
+    environment:
+      HUB_PORT_4444_TCP_ADDR: hub
+      HUB_PORT_4444_TCP_PORT: 4444
+      NODE_MAX_SESSION: 2
+      NODE_MAX_INSTANCES: 2
+    volumes:
+      - /dev/shm:/dev/shm
+    ports:
+      - "9002:5900"
+    links:
+      - hub
+```
+
+## start docker compose
+```sh
+$ docker-compose -f /path/to/docker-compose.yml up -d
+ ```
+ 
+# Code structure:
+```sh
+root
+  ---TestCase
+      ---TestPackage (ex: PersonalUI, MobileUI, AddminUI...)
+         ---TestSuite (ex: Login, SubmitPosting, EditPosting...)
+            ---TestSuitePage (ex: LoginPage)
+            ---TestSuitePageTest (ex: LoginPageTest)
+            ---TestSuitePageTestFactory (ex: LoginPageTestFactory)
+```
+
+- TestSuitePage: implement Page Object Model pattern
+- TestSuitePageTest: inherite TestSuitePage class. implement use case logical.
+- TestSuitePageTestFactory: inherite ITestSuitePageFactory. generate test all case on many enviroments (browser) by requirement
+
+
+ 
