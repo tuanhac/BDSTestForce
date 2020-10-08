@@ -90,7 +90,7 @@ root
 
 - To exclude test suite to avoid auto run test: add Obsolete attribute to factory class.
 - Walk from page to page: init the pages with same driver and call their actions to walk to other page.
-```sh
+```c#
 var driver = driverManager.getDriver();
 
 var loginPage = new LogInPage(driver);
