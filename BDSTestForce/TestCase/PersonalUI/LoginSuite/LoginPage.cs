@@ -1,5 +1,6 @@
 ﻿using BDSTestForce.Core;
 using OpenQA.Selenium;
+using OpenQA.Selenium.Support.UI;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -60,7 +61,12 @@ namespace BDSTestForce.TestCase.PersonalUI.LoginSuite
 
         public bool isLoginSuccess() {
             if (this.driver != null)
+            {
+                WebDriverWait wait = new WebDriverWait(this.driver, TimeSpan.FromSeconds(10));
+                wait.Until(d => d.Url.Contains("/trang-ca-nhan"));
+
                 return this.driver.Url.Contains("/trang-ca-nhan");
+            }
             else
                 return false;
         }

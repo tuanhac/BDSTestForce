@@ -23,6 +23,8 @@ namespace BDSTestForce.Core
             }
         }
 
+        protected override string DriverName => "Chrome";
+
         protected override async Task<bool> createWebDriver()
         {
             if (await base.createWebDriver())

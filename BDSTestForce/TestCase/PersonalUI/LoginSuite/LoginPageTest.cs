@@ -1,5 +1,6 @@
 ﻿using BDSTestForce.Core;
 using OpenQA.Selenium;
+using OpenQA.Selenium.Support.Extensions;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -33,7 +34,9 @@ namespace BDSTestForce.TestCase.PersonalUI.LoginSuite
                         var page = new LoginPageTest(driver);
                         page.login("invalidusername", "invalidpassword");
 
-                        return new TestCaseResultInfo { Message = $"Done TestLoginInValid", Pass = page.isLoginSuccess() == false };
+                        var screenShot = driverManager.takeSnapShot("LoginPage-TestLoginInValid");
+
+                        return new TestCaseResultInfo { Message = $"Done TestLoginInValid, snapShot: {screenShot}", Pass = page.isLoginSuccess() == false };
                     }
                     else
                         return new TestCaseResultInfo { Message = $"NotStart TestLoginInValid", Pass = false };
@@ -53,9 +56,11 @@ namespace BDSTestForce.TestCase.PersonalUI.LoginSuite
                     if (driver != null)
                     {
                         var page = new LoginPageTest(driver);
-                        page.login("validusername", "validpassword");
+                        page.login(Config.CurrentUserEmail, Config.CurrentUserPass);
 
-                        return new TestCaseResultInfo { Message = $"Done TestLoginValid", Pass = page.isLoginSuccess() };
+                        var screenShot = driverManager.takeSnapShot("LoginPage-TestLoginValid");
+
+                        return new TestCaseResultInfo { Message = $"Done TestLoginValid, snapShot: {screenShot}", Pass = page.isLoginSuccess() };
                     }
                     else
                         return new TestCaseResultInfo { Message = $"NotStart TestLoginInValid", Pass = false };

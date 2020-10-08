@@ -25,6 +25,8 @@ namespace BDSTestForce.Core
             }
         }
 
+        protected override string DriverName => "Firefox";
+
         protected override async Task<bool> createWebDriver()
         {
             if (await base.createWebDriver())

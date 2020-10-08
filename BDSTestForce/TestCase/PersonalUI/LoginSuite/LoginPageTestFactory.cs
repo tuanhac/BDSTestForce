@@ -7,6 +7,7 @@ using System.Threading.Tasks;
 
 namespace BDSTestForce.TestCase.PersonalUI.LoginSuite
 {
+    [Obsolete("not current in use", true)]
     public class LoginPageTestFactory : ITestSuitePageFactory
     {
         public List<Task<TestCaseResultInfo>> getAllTest()

@@ -19,7 +19,7 @@ namespace BDSTestForce
     /*
      * https://medium.com/@nitinbhardwaj6/selenium-grid-with-docker-c8ecb0d8404
      * http://localhost:4444/grid/console
-     * $ docker-compose -f C:\Users\quoct\source\repos\BDSTestForce\BDSTestForce\docker-compose.yml up -d
+     * $ docker-compose -f D:\BDSTestForce\BDSTestForce\docker-compose.yml up -d
      */
     class Program
     {   
@@ -31,7 +31,7 @@ namespace BDSTestForce
             List<Task<TestCaseResultInfo>> lstTask = new List<Task<TestCaseResultInfo>>();// new LoginPageTestFactory().getAllTest();
 
             var typeInterface = typeof(ITestSuitePageFactory);
-            var lstTypeImplemented = AppDomain.CurrentDomain.GetAssemblies().SelectMany(s => s.GetTypes()).Where(p => p.IsClass && typeInterface.IsAssignableFrom(p));
+            var lstTypeImplemented = AppDomain.CurrentDomain.GetAssemblies().SelectMany(s => s.GetTypes()).Where(p => p.IsClass && typeInterface.IsAssignableFrom(p) && p.CustomAttributes.Any(obj => obj.AttributeType == typeof(ObsoleteAttribute)) == false);
 
             foreach (var type in lstTypeImplemented) {
                 var obj = Activator.CreateInstance(type) as ITestSuitePageFactory;

@@ -80,6 +80,7 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Core\Config.cs" />
     <Compile Include="Core\ITestSuitePageTest.cs" />
     <Compile Include="Core\ChromeDriverManager.cs" />
     <Compile Include="Core\DriverManager.cs" />
@@ -89,6 +90,9 @@
     <Compile Include="Core\TestCaseResultInfo.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="TestCase\PersonalUI\ChangPassSuite\ChangePassPage.cs" />
+    <Compile Include="TestCase\PersonalUI\ChangPassSuite\ChangePassTest.cs" />
+    <Compile Include="TestCase\PersonalUI\ChangPassSuite\ChangePassTestFactory.cs" />
     <Compile Include="TestCase\PersonalUI\LoginSuite\LoginPage.cs" />
     <Compile Include="TestCase\PersonalUI\LoginSuite\LoginPageTest.cs" />
     <Compile Include="TestCase\PersonalUI\LoginSuite\LoginPageTestFactory.cs" />
