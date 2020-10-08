@@ -86,5 +86,18 @@ root
 - TestSuitePageTest: inherite TestSuitePage class. implement use case logical.
 - TestSuitePageTestFactory: inherite ITestSuitePageFactory. generate test all case on many enviroments (browser) by requirement
 
+# Code Guidline
 
+- To exclude test suite to avoid auto run test: add Obsolete attribute to factory class.
+- Walk from page to page: init the pages with same driver and call their actions to walk to other page.
+```sh
+var driver = driverManager.getDriver();
+
+var loginPage = new LogInPage(driver);
+loginPage.login();
+
+var changePassPage = new ChangePassPageTest(driver);
+changePassPage.ChangePass(oldPass, newPass, confirmPass);
+
+```
  
