@@ -8,7 +8,7 @@ namespace BDSTestForce.Core
 {
     public static class Config
     {
-        public static string CurrentUserEmail => "quoctuan047@gmail.com";
-        public static string CurrentUserPass = "U@jS49hPxAZDLLM";//U@jS49hPxAZDLLM
+        public static string CurrentUserEmail => "xxxx";
+        public static string CurrentUserPass = "xxxx";//
     }
 }
